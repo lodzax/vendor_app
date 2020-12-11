@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img src="{{ url('img/vendor logo.png')}}" width="160" height="120" alt="Vendor Logo">
+                        <!-- <img src="{{ url('images/logo.png')}}" width="160" height="120" alt="Vendor Logo"> -->
+                        <h1 class="ml-4 my-2">Vendor</h1>
                     </a>
                 </div>
 
@@ -51,6 +52,7 @@
                                 </svg>
                             </div>
                         </button>
+                       
                     </x-slot>
                    
 
@@ -65,6 +67,9 @@
                                 {{ __('Logout') }}
                             </x-dropdown-link>
                         </form>
+                        <x-dropdown-link :href="route('product.create')">
+                            Add Product
+                        </x-dropdown-link>
                     </x-slot>
                 </x-dropdown>
             </div>

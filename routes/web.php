@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,5 +41,8 @@ Route::get('/clothes', function () {
 Route::get('/cart', function () {
     return view('cart');
 })->middleware(['auth'])->name('cart');
+
+Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+Route::post('/products', [ProductController::class, 'store'])->name('product.store');
 
 require __DIR__.'/auth.php';
