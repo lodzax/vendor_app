@@ -17,16 +17,28 @@ class ProductController extends Controller
         $validated = $request->validate([
             'name' => 'required',
             'description' => 'required',
-        ]);
+        ]);     
 
         $product = new Product;
         $product->title = $request->name;
         $product->description = $request->description;
         $product->user_id = auth()->user()->id;
-        $product->image_url = 'testfoo';
-        
+
+        if ($request->has('image')) {
+            $img = $request->file('image');
+            $path = $img->store('products');
+            $product->image_url = $path;
+        }
+
         $product->save();
 
         return view('product.add');
+    }
+
+    public function dashboard()
+    {
+        $products = auth()->user()->products()->get();
+
+        return view('dashboard', compact('products'));
     }
 }

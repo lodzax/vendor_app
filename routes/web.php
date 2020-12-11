@@ -18,9 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 Route::get('/food', function () {
     return view('food');
@@ -41,6 +41,8 @@ Route::get('/clothes', function () {
 Route::get('/cart', function () {
     return view('cart');
 })->middleware(['auth'])->name('cart');
+
+Route::get('/dashboard', [ProductController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 
 Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
 Route::post('/products', [ProductController::class, 'store'])->name('product.store');
