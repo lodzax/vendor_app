@@ -43,6 +43,7 @@
                 </footer>
             </article>
             @endforeach
+
         </div>
     </div>
 </x-app-layout>
