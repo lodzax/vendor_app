@@ -38,10 +38,6 @@ Route::get('/clothes', function () {
     return view('clothes');
 })->middleware(['auth'])->name('clothes');
 
-Route::get('/cart', function () {
-    return view('cart');
-})->middleware(['auth'])->name('cart');
-
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/dashboard', [ProductController::class, 'dashboard'])->name('dashboard');
@@ -51,6 +47,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
 
     Route::get('/home', [ProductController::class, 'home'])->name('home');
+
+    Route::get('/addcart/{id}', [ProductController::class, 'addCart'])->name('addcart');
+    Route::get('/cart', [ProductController::class, 'showCart'])->name('cart');
 });
 
 require __DIR__.'/auth.php';
