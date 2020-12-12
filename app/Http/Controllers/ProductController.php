@@ -23,6 +23,7 @@ class ProductController extends Controller
         $product->title = $request->name;
         $product->description = $request->description;
         $product->user_id = auth()->user()->id;
+        $product->category = $request->category;
 
         if ($request->has('image')) {
             $img = $request->file('image');
@@ -40,5 +41,12 @@ class ProductController extends Controller
         $products = auth()->user()->products()->get();
 
         return view('dashboard', compact('products'));
+    }
+
+    public function home()
+    {
+        $products = Product::all();
+
+        return view('home', compact('products'));
     }
 }

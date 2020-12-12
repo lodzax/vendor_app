@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Home') }}
         </h2>
     </x-slot>
 
@@ -10,7 +10,7 @@
             @foreach($products as $product)
             <article class="overflow-hidden rounded-lg shadow-lg">
                 <a href="#">
-                    <img alt="Placeholder" class="block h-auto w-full" src="https://picsum.photos/600/400/?random">
+                    <img alt="Placeholder" class="block h-auto w-full" src="{{ $product->image_url }}">
                 </a>
 
                 <header class="flex items-center justify-between leading-tight p-2 md:p-4">
@@ -36,10 +36,10 @@
                             {{ $product->user->name }}
                         </p>
                     </a>
-                    <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
+                    <!-- <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
                         <span class="hidden">Like</span>
                         <i class="fa fa-heart"></i>
-                    </a>
+                    </a> -->
                 </footer>
             </article>
             @endforeach

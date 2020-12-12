@@ -42,9 +42,14 @@ Route::get('/cart', function () {
     return view('cart');
 })->middleware(['auth'])->name('cart');
 
-Route::get('/dashboard', [ProductController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
+Route::middleware(['auth'])->group(function () {
 
-Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
-Route::post('/products', [ProductController::class, 'store'])->name('product.store');
+    Route::get('/dashboard', [ProductController::class, 'dashboard'])->name('dashboard');
+
+    Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+    Route::post('/products', [ProductController::class, 'store'])->name('product.store');
+
+    Route::get('/home', [ProductController::class, 'home'])->name('home');
+});
 
 require __DIR__.'/auth.php';
