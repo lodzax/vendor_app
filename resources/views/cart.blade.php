@@ -9,18 +9,14 @@
             <div class="mb-4">
                 <h1 class="text-grey-darkest">Shopping Cart</h1>
             </div>
+            @foreach ($cart as $item)
             <div>
                 <div class="flex mb-4 items-center">
-                    <p class="w-full text-grey-darkest">Product 1</p>
+                    <p class="w-full text-grey-darkest">{{ $item->name }}</p>
                     <button class="flex-no-shrink p-2 ml-2 border-2 rounded text-red">Remove</button>
                 </div>
             </div>
-            <div>
-                <div class="flex mb-4 items-center">
-                    <p class="w-full text-grey-darkest">Product 2</p>
-                    <button class="flex-no-shrink p-2 ml-2 border-2 rounded text-red">Remove</button>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </x-app-layout>

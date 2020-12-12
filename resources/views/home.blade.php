@@ -4,6 +4,20 @@
             {{ __('Home') }}
         </h2>
     </x-slot>
+    @if(session()->has('message'))
+        <section class="flex items-center justify-center mt-4 mx-3">
+            <div class="flex items-center bg-white shadow  rounded mt-6 px-2 mx-8" style="width: 24rem;">
+                <div class="mr-6 bg-green-500 rounded px-4 py-2  text-center -ml-3">
+                    <svg fill="none" viewBox="0 0 24 24" class="w-8 h-8 text-white" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                </div>
+                <div class="flex items-center">
+                    <h2 class="text-green-500 text-2xl font-bold mr-2 ">Success</h2>
+                </div>
+            </div><!--one-->
+        </section>
+    @endif
 
     <div class="py-12">
         <div class="max-w-12xl mx-auto sm:px-6 lg:px-8 grid grid-cols-3 gap-4">
@@ -37,11 +51,13 @@
                             {{ $product->user->name }}
                         </p>
                     </a>
+                   <a href="{{ route('addcart', $product->id) }}">
                     <button
-                        type="button"
-                        class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline">
-                        Add To Cart
-                    </button>
+                            type="button"
+                            class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline">
+                            Add To Cart
+                        </button>
+                   </a>
                 </footer>
             </article>
             @endforeach

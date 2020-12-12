@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use ShoppingCart;
 
 class ProductController extends Controller
 {
@@ -55,5 +56,23 @@ class ProductController extends Controller
         $product = Product::where('id', '=', $id)->first();
 
         return view('product.edit', compact('product'));
+    }
+
+    public function addCart($id)
+    {
+        $product = Product::where('id', '=', $id)->first();
+
+        $row = ShoppingCart::add($id, $product->title, 1, 3.99);
+
+        // $rawId = $row->rawId();
+
+        return back()->with('message', '');
+    }
+
+    public function showCart()
+    {
+        $cart = ShoppingCart::all();
+
+        return view('cart', compact('cart'));
     }
 }
