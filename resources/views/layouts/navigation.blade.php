@@ -70,7 +70,7 @@
                                 {{ __('Logout') }}
                             </x-dropdown-link>
                         </form>
-                        <x-dropdown-link :href="route('product.create')">
+                        <x-dropdown-link :href="route('products.create')">
                             Add Product
                         </x-dropdown-link>
                     </x-slot>

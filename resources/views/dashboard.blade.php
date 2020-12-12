@@ -9,8 +9,8 @@
         <div class="max-w-12xl mx-auto sm:px-6 lg:px-8 grid grid-cols-3 gap-4">
             @foreach($products as $product)
             <article class="overflow-hidden rounded-lg shadow-lg">
-                <a href="#">
-                    <img alt="Placeholder" class="block h-auto w-full" src="https://picsum.photos/600/400/?random">
+                <a href="{{route('products.edit', $product->id)}}">
+                    <img alt="product_img" class="block h-auto w-full" src="{{ Storage::url($product->image_url) }}">
                 </a>
 
                 <header class="flex items-center justify-between leading-tight p-2 md:p-4">

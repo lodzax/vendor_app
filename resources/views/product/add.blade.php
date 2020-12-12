@@ -12,7 +12,7 @@
                     <form 
                         class="bg-white shadow-lg rounded px-12 pt-6 pb-8 mb-4" 
                         method="POST"
-                        action="{{ route('product.store') }}"
+                        action="{{ route('products.store') }}"
                         enctype="multipart/form-data">
                         <!-- @csrf -->
                         @csrf

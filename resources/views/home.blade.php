@@ -19,6 +19,7 @@
                             {{ $product->title }}
                         </a>
                     </h1>
+                    
                     <p class="text-grey-darker text-sm">
                         {{ \Carbon\Carbon::createFromTimeStamp(strtotime($product->created_at))->diffForHumans() }}
                     </p>

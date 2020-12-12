@@ -27,7 +27,7 @@ class ProductController extends Controller
 
         if ($request->has('image')) {
             $img = $request->file('image');
-            $path = $img->store('products');
+            $path = $img->store('public');
             $product->image_url = $path;
         }
 
@@ -48,5 +48,12 @@ class ProductController extends Controller
         $products = Product::all();
 
         return view('home', compact('products'));
+    }
+
+    public function edit($id)
+    {
+        $product = Product::where('id', '=', $id)->first();
+
+        return view('product.edit', compact('product'));
     }
 }
