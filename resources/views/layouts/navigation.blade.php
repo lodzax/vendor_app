@@ -6,12 +6,16 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img src="{{ url('img/vendor logo.png')}}" width="160" height="120" alt="Vendor Logo">
+                        <!-- <img src="{{ url('images/logo.png')}}" width="160" height="120" alt="Vendor Logo"> -->
+                        <h1 class="ml-4 my-2">Vendor</h1>
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                        {{ __('Home') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
@@ -51,6 +55,7 @@
                                 </svg>
                             </div>
                         </button>
+                       
                     </x-slot>
                    
 
@@ -65,6 +70,9 @@
                                 {{ __('Logout') }}
                             </x-dropdown-link>
                         </form>
+                        <x-dropdown-link :href="route('products.create')">
+                            Add Product
+                        </x-dropdown-link>
                     </x-slot>
                 </x-dropdown>
             </div>

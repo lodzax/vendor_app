@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Home') }}
         </h2>
     </x-slot>
 
@@ -9,8 +9,8 @@
         <div class="max-w-12xl mx-auto sm:px-6 lg:px-8 grid grid-cols-3 gap-4">
             @foreach($products as $product)
             <article class="overflow-hidden rounded-lg shadow-lg">
-                <a href="{{route('products.edit', $product->id)}}">
-                    <img alt="product_img" class="block h-auto w-full" src="{{ Storage::url($product->image_url) }}">
+                <a href="#">
+                    <img alt="Placeholder" class="block h-auto w-full" src="{{ $product->image_url }}">
                 </a>
 
                 <header class="flex items-center justify-between leading-tight p-2 md:p-4">
@@ -19,6 +19,7 @@
                             {{ $product->title }}
                         </a>
                     </h1>
+                    
                     <p class="text-grey-darker text-sm">
                         {{ \Carbon\Carbon::createFromTimeStamp(strtotime($product->created_at))->diffForHumans() }}
                     </p>
@@ -36,14 +37,13 @@
                             {{ $product->user->name }}
                         </p>
                     </a>
-                    <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
+                    <!-- <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
                         <span class="hidden">Like</span>
                         <i class="fa fa-heart"></i>
-                    </a>
+                    </a> -->
                 </footer>
             </article>
             @endforeach
-
         </div>
     </div>
 </x-app-layout>

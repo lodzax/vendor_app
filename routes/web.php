@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 Route::get('/food', function () {
     return view('food');
@@ -40,5 +41,16 @@ Route::get('/clothes', function () {
 Route::get('/cart', function () {
     return view('cart');
 })->middleware(['auth'])->name('cart');
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/dashboard', [ProductController::class, 'dashboard'])->name('dashboard');
+
+    Route::get('/product/create', [ProductController::class, 'create'])->name('products.create');
+    Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+    Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
+
+    Route::get('/home', [ProductController::class, 'home'])->name('home');
+});
 
 require __DIR__.'/auth.php';
